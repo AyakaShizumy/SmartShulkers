@@ -1,0 +1,9 @@
+main: ee.whitenights.smartshulkers.Main
+name: SmartShulkers
+author: WhiteNights
+website: https://vk.com/ayakash
+version: 1.0.1
+commands:
+  ss:
+    usage: /ss
+    description: Text
