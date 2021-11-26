@@ -21,6 +21,10 @@ public class Main extends JavaPlugin {
         config = getConfig();
         logger = getLogger();
 
+        int pluginId = 13421;
+        Metrics metrics = new Metrics(this, pluginId);
+        metrics.addCustomChart(new Metrics.SimplePie("chart_id", () -> String.valueOf(1)));
+
         getServer().getPluginManager().registerEvents(new PlayerPickupItem(), this);
         getServer().getPluginManager().registerEvents(new PlayerInteractHandler(), this);
         getServer().getPluginManager().registerEvents(new PlayerInventoryClick(), this);

@@ -11,7 +11,8 @@ matrix:
   - "-iiiiiii-"
   - "-iiiiiii-"
   - "---------"
-
+#SmartShulker name
+name: "§aShulker"
 #You can change shulker menu and inventory
 menu:
   settings: #Change shulker settings title

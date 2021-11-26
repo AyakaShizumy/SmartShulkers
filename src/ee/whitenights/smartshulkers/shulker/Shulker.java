@@ -6,6 +6,7 @@ import org.bukkit.Material;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,7 @@ public class Shulker {
     public static final String INVENTORY_NAME = Main.config.getString("menu.box.name");
     public static final String MENU_PATCH = "menu";
     public static final String MESSAGE_PATCH = "message";
+    public static final String SHULKER_NAME = Main.config.getString("name");
 
     public static ItemStack createShulker(){
         ItemStack shulker = new ItemStack(Material.PINK_SHULKER_BOX);
@@ -28,7 +30,10 @@ public class Shulker {
         NBTManager.setNBTCopy(shulker, TAG_ENABLE, "true");
         NBTManager.setNBTCopy(shulker, TAG_ITEM, "&");
         NBTManager.setNBTCopy(shulker, TAG_MODE, "whitelist");
-        shulker.getItemMeta().addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        ItemMeta meta = shulker.getItemMeta();
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        meta.setDisplayName(SHULKER_NAME);
+        shulker.setItemMeta(meta);
         return shulker;
     }
 
