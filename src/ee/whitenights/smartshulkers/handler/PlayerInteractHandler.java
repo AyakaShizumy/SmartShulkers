@@ -28,7 +28,7 @@ public class PlayerInteractHandler implements Listener {
             event.setCancelled(true);
             BlockStateMeta blockMeta = (BlockStateMeta) item.getItemMeta();
             ShulkerBox shulkerBox = (ShulkerBox) blockMeta.getBlockState();
-            Inventory inv = Bukkit.createInventory(null, 27, player.getDisplayName() + "`s Box");
+            Inventory inv = Bukkit.createInventory(null, 27, Shulker.INVENTORY_NAME.replace("%player%", event.getPlayer().getName()));
             inv.setContents(shulkerBox.getInventory().getContents());
             player.openInventory(inv);
         }

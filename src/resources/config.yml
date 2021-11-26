@@ -1,7 +1,52 @@
+#Shulker menu matrix;
+#s - shulker info;
+#b - enable/disable button;
+#l - whitelist/blacklist button
+#i - item slot
+#For plugin working, you need to specify all buttons and at least 1 slot for the item!
 matrix:
-  - '---------'
-  - '--b-s-l--'
-  - '---------'
-  - '-iiiiiii-'
-  - '-iiiiiii-'
-  - '---------'
+  - "---------"
+  - "--b-s-l--"
+  - "---------"
+  - "-iiiiiii-"
+  - "-iiiiiii-"
+  - "---------"
+
+#You can change shulker menu and inventory
+menu:
+  #Change shulker settings title
+  settings:
+    name: "Shulker Settings"
+  #Change shulker inventory title
+  box:
+    name: "%player%`s Box"
+  #Enable button
+  enable:
+    type: STAINED_GLASS_PANE
+    damage: 5
+    meta:
+      display-name: "§aEnable"
+  #Disable button
+  disable:
+    type: STAINED_GLASS_PANE
+    damage: 14
+    meta:
+      display-name: "§cDisable"
+  #Whitelist button
+  whitelist:
+    type: STAINED_GLASS_PANE
+    damage: 8
+    meta:
+      display-name: "§aMod §a[§fWhitelist§a]"
+  #Blacklist button
+  blacklist:
+    type: STAINED_GLASS_PANE
+    damage: 15
+    meta:
+      display-name: "§aMod §a[§8Blacklist§a]"
+  #Background items
+  background:
+    type: STAINED_GLASS_PANE
+    damage: 0
+    meta:
+      display-name: " "

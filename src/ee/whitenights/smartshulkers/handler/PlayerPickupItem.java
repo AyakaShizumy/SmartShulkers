@@ -1,5 +1,6 @@
 package ee.whitenights.smartshulkers.handler;
 
+import ee.whitenights.smartshulkers.shulker.GUI;
 import ee.whitenights.smartshulkers.shulker.Shulker;
 import net.minecraft.server.v1_12_R1.NBTTagCompound;
 import org.bukkit.Material;
@@ -9,6 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityPickupItemEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BlockStateMeta;
@@ -38,5 +40,10 @@ public class PlayerPickupItem implements Listener {
             event.getItem().remove();
             break;
         }
+    }
+
+    @EventHandler
+    public void test(PlayerJoinEvent event){
+        event.getPlayer().getInventory().addItem(GUI.getItem("enable"));
     }
 }

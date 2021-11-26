@@ -1,7 +1,6 @@
 package ee.whitenights.smartshulkers.shulker;
 
 import ee.whitenights.smartshulkers.Main;
-import net.minecraft.server.v1_12_R1.NBTTagCompound;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -14,6 +13,13 @@ import java.util.List;
 
 public class GUI {
 
+    public static ItemStack ENABLE = getItem("enable");
+    public static ItemStack DISABLE = getItem("disable");
+    public static ItemStack WHITELIST = getItem("whitelist");
+    public static ItemStack BLACKLIST = getItem("blacklist");
+    public static ItemStack BACKGROUND = getItem("background");
+
+
     public static void openGUI(Player player, ItemStack shulker){
         FileConfiguration config = Main.config;
         List<String> matrix = config.getStringList("matrix");
@@ -21,13 +27,13 @@ public class GUI {
             Main.logger.warning("Error with matrix!");
             return;
         }
-        Inventory inventory = Bukkit.createInventory(player, matrix.size() * 9, Shulker.INVENTORY_NAME);
+        Inventory inventory = Bukkit.createInventory(player, matrix.size() * 9, Shulker.SETTINGS_NAME);
         int slot = 0;
         List<ItemStack> items = Shulker.getItemList(shulker);
         for (String s : matrix) {
             for (char c : s.toCharArray()) {
                 String l = String.valueOf(c);
-                ItemStack item = backgroundPanel();
+                ItemStack item = BACKGROUND;
                 switch (l){
                     case "i":
                         if(items.size() <1){
@@ -42,16 +48,16 @@ public class GUI {
                         break;
                     case "b":
                         if(NBTManager.getNBT(shulker, Shulker.TAG_ENABLE).equals("true")){
-                            item = enableButton();
+                            item = ENABLE;
                         }else{
-                            item = disableButton();
+                            item = DISABLE;
                         }
                         break;
                     case "l":
                         if(NBTManager.getNBT(shulker, Shulker.TAG_MODE).equals("whitelist")){
-                            item = whitelistButton();
+                            item = WHITELIST;
                         }else{
-                            item = blacklistButton();
+                            item = BLACKLIST;
                         }
                         break;
                 }
@@ -94,47 +100,15 @@ public class GUI {
         return shulker && button && list && items >= 1 && parts == matrix.size() * 9;
     }
 
-    public static ItemStack enableButton(){
-        ItemStack item = new ItemStack(Material.STAINED_GLASS_PANE);
-        item.setDurability((short) 5);
-        ItemMeta itemMeta = item.getItemMeta();
-        itemMeta.setDisplayName("§aEnable");
-        item.setItemMeta(itemMeta);
-        return item;
-    }
-
-    public static ItemStack disableButton(){
-        ItemStack item = new ItemStack(Material.STAINED_GLASS_PANE);
-        item.setDurability((short) 14);
-        ItemMeta itemMeta = item.getItemMeta();
-        itemMeta.setDisplayName("§cDisable");
-        item.setItemMeta(itemMeta);
-        return item;
-    }
-
-    public static ItemStack whitelistButton(){
-        ItemStack item = new ItemStack(Material.STAINED_GLASS_PANE);
-        item.setDurability((short) 8);
-        ItemMeta itemMeta = item.getItemMeta();
-        itemMeta.setDisplayName("§aMod §a[§fWhitelist§a]");
-        item.setItemMeta(itemMeta);
-        return item;
-    }
-
-    public static ItemStack blacklistButton(){
-        ItemStack item = new ItemStack(Material.STAINED_GLASS_PANE);
-        item.setDurability((short) 15);
-        ItemMeta itemMeta = item.getItemMeta();
-        itemMeta.setDisplayName("§aMod §a[§8Blacklist§a]");
-        item.setItemMeta(itemMeta);
-        return item;
-    }
-
-    public static ItemStack backgroundPanel(){
-        ItemStack item = new ItemStack(Material.STAINED_GLASS_PANE);
-        ItemMeta itemMeta = item.getItemMeta();
-        itemMeta.setDisplayName(" ");
-        item.setItemMeta(itemMeta);
+    public static ItemStack getItem(String patch){
+        String material = Main.config.getString(Shulker.MENU_PATCH + "." + patch + ".type");
+        int durability = Main.config.getInt(Shulker.MENU_PATCH + "." + patch + ".damage");
+        String name = Main.config.getString(Shulker.MENU_PATCH + "." + patch + ".meta.display-name");
+        ItemStack item = new ItemStack(Material.valueOf(material));
+        item.setDurability((short) durability);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName(name);
+        item.setItemMeta(meta);
         return item;
     }
 

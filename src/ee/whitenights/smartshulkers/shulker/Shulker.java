@@ -1,6 +1,6 @@
 package ee.whitenights.smartshulkers.shulker;
 
-import org.bukkit.Bukkit;
+import ee.whitenights.smartshulkers.Main;
 import org.bukkit.Material;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemFlag;
@@ -12,11 +12,13 @@ import java.util.List;
 
 public class Shulker {
 
-    public static String TAG = "smart";
-    public static String TAG_ITEM = "item";
-    public static String TAG_MODE = "mode";
-    public static String TAG_ENABLE = "enable";
-    public static String INVENTORY_NAME = "Shulker Settings";
+    public static final String TAG = "smart";
+    public static final String TAG_ITEM = "item";
+    public static final String TAG_MODE = "mode";
+    public static final String TAG_ENABLE = "enable";
+    public static final String SETTINGS_NAME = Main.config.getString("menu.settings.name");
+    public static final String INVENTORY_NAME = Main.config.getString("menu.box.name");
+    public static final String MENU_PATCH = "menu";
 
     public static ItemStack createShulker(){
         ItemStack shulker = new ItemStack(Material.PINK_SHULKER_BOX);
