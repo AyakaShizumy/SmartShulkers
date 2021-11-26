@@ -1,6 +1,7 @@
 package ee.whitenights.smartshulkers.shulker;
 
 import ee.whitenights.smartshulkers.Main;
+import ee.whitenights.smartshulkers.shulker.util.NBTManager;
 import org.bukkit.Material;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemFlag;
@@ -19,6 +20,7 @@ public class Shulker {
     public static final String SETTINGS_NAME = Main.config.getString("menu.settings.name");
     public static final String INVENTORY_NAME = Main.config.getString("menu.box.name");
     public static final String MENU_PATCH = "menu";
+    public static final String MESSAGE_PATCH = "message";
 
     public static ItemStack createShulker(){
         ItemStack shulker = new ItemStack(Material.PINK_SHULKER_BOX);

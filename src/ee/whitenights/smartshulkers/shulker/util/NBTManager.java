@@ -1,5 +1,6 @@
-package ee.whitenights.smartshulkers.shulker;
+package ee.whitenights.smartshulkers.shulker.util;
 
+import ee.whitenights.smartshulkers.shulker.Shulker;
 import net.minecraft.server.v1_12_R1.NBTTagCompound;
 import org.bukkit.craftbukkit.v1_12_R1.inventory.CraftItemStack;
 import org.bukkit.inventory.ItemStack;
@@ -17,7 +18,7 @@ public class NBTManager {
     }
 
     public static void setNBT(ItemStack item, String tag, String text){
-        net.minecraft.server.v1_12_R1.ItemStack nmsCopy = getItem(item);
+        net.minecraft.server.v1_12_R1.ItemStack nmsCopy = getNBTItem(item);
         assert nmsCopy != null;
         NBTTagCompound compound = (nmsCopy.getTag() == null) ? new NBTTagCompound() : nmsCopy.getTag();
         compound.setString(tag, text);
@@ -25,7 +26,7 @@ public class NBTManager {
     }
 
     public static void removeNBT(ItemStack item, String tag){
-        net.minecraft.server.v1_12_R1.ItemStack nmsCopy = getItem(item);
+        net.minecraft.server.v1_12_R1.ItemStack nmsCopy = getNBTItem(item);
         assert nmsCopy != null;
         NBTTagCompound compound = (nmsCopy.getTag() == null) ? new NBTTagCompound() : nmsCopy.getTag();
         compound.remove(tag);
@@ -46,7 +47,7 @@ public class NBTManager {
         return (compound.getString(Shulker.TAG).equals("1"));
     }
 
-    public static net.minecraft.server.v1_12_R1.ItemStack getItem(ItemStack item){
+    public static net.minecraft.server.v1_12_R1.ItemStack getNBTItem(ItemStack item){
         Field handle;
         try {
             handle = CraftItemStack.class.getDeclaredField("handle");

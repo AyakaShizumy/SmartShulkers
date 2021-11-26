@@ -1,21 +1,14 @@
-package ee.whitenights.smartshulkers.handler;
+package ee.whitenights.smartshulkers.shulker.handler;
 
-import ee.whitenights.smartshulkers.shulker.GUI;
 import ee.whitenights.smartshulkers.shulker.Shulker;
-import net.minecraft.server.v1_12_R1.NBTTagCompound;
-import org.bukkit.Material;
 import org.bukkit.block.ShulkerBox;
-import org.bukkit.craftbukkit.v1_12_R1.inventory.CraftItemStack;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityPickupItemEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BlockStateMeta;
-
-import java.lang.reflect.Field;
 
 public class PlayerPickupItem implements Listener {
 
@@ -23,6 +16,7 @@ public class PlayerPickupItem implements Listener {
     public void onPlayerPickupItem(EntityPickupItemEvent event){
         if(!(event.getEntity() instanceof Player)) return;
         Player player = (Player) event.getEntity();
+        if(!player.hasPermission("smartshulker.shulker.use")) return;
         ItemStack[] list = player.getInventory().getStorageContents();
         ItemStack currentItem = event.getItem().getItemStack();
         for (ItemStack itemStack : list) {
@@ -40,10 +34,5 @@ public class PlayerPickupItem implements Listener {
             event.getItem().remove();
             break;
         }
-    }
-
-    @EventHandler
-    public void test(PlayerJoinEvent event){
-        event.getPlayer().getInventory().addItem(GUI.getItem("enable"));
     }
 }

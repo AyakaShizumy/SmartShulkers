@@ -14,39 +14,41 @@ matrix:
 
 #You can change shulker menu and inventory
 menu:
-  #Change shulker settings title
-  settings:
+  settings: #Change shulker settings title
     name: "Shulker Settings"
-  #Change shulker inventory title
-  box:
-    name: "%player%`s Box"
-  #Enable button
+  box: #Change shulker inventory title
+    name: "%player%`s shulker"
   enable:
     type: STAINED_GLASS_PANE
     damage: 5
     meta:
       display-name: "§aEnable"
-  #Disable button
   disable:
     type: STAINED_GLASS_PANE
     damage: 14
     meta:
       display-name: "§cDisable"
-  #Whitelist button
   whitelist:
     type: STAINED_GLASS_PANE
     damage: 8
     meta:
       display-name: "§aMod §a[§fWhitelist§a]"
-  #Blacklist button
   blacklist:
     type: STAINED_GLASS_PANE
     damage: 15
     meta:
       display-name: "§aMod §a[§8Blacklist§a]"
-  #Background items
-  background:
+  background: #Background items
     type: STAINED_GLASS_PANE
     damage: 0
     meta:
       display-name: " "
+
+message:
+  no-permissions: "You don`t have permissions!"
+  player-not-found: "Player with this name was not found."
+  shulker-give-ok: "Shulker successfully added."
+  shulker-convert-ok: "Shulker successfully converted."
+  shulker-convert-error: "You must have a shulker in your hand!"
+  cmd-player-only: "This command can only be used by players"
+  matrix-error: "Error with matrix! Contact with server Administrator!"

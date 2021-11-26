@@ -1,6 +1,7 @@
-package ee.whitenights.smartshulkers.shulker;
+package ee.whitenights.smartshulkers.shulker.util;
 
 import ee.whitenights.smartshulkers.Main;
+import ee.whitenights.smartshulkers.shulker.Shulker;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -22,9 +23,13 @@ public class GUI {
 
     public static void openGUI(Player player, ItemStack shulker){
         FileConfiguration config = Main.config;
+        if(!player.hasPermission("smartshulker.shulker.use")){
+            player.sendMessage(Message.NO_PERMISSIONS);
+            return;
+        }
         List<String> matrix = config.getStringList("matrix");
         if(!matrixVerify(matrix)){
-            Main.logger.warning("Error with matrix!");
+            player.sendMessage(Message.MATRIX_ERROR);
             return;
         }
         Inventory inventory = Bukkit.createInventory(player, matrix.size() * 9, Shulker.SETTINGS_NAME);

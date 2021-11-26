@@ -1,4 +1,4 @@
-package ee.whitenights.smartshulkers.handler;
+package ee.whitenights.smartshulkers.shulker.handler;
 
 import ee.whitenights.smartshulkers.shulker.Shulker;
 import org.bukkit.block.ShulkerBox;

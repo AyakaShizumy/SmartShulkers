@@ -1,7 +1,7 @@
-package ee.whitenights.smartshulkers.handler;
+package ee.whitenights.smartshulkers.shulker.handler;
 
-import ee.whitenights.smartshulkers.shulker.GUI;
-import ee.whitenights.smartshulkers.shulker.NBTManager;
+import ee.whitenights.smartshulkers.shulker.util.GUI;
+import ee.whitenights.smartshulkers.shulker.util.NBTManager;
 import ee.whitenights.smartshulkers.shulker.Shulker;
 import org.bukkit.Bukkit;
 import org.bukkit.block.ShulkerBox;
